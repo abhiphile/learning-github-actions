@@ -6,9 +6,17 @@ jobs :
     check-bats-version:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Compile Latex Document
+              uses: xu-cheng/latex-action@v2
               with:
-                node-version: '20'
-            - run: npm install -g bats
-            - run: bats -v
+                working_directory: src
+                root_file: main.tex
+                latexmk_use_lualatex: true
+            - name: Upload our file
+              uses: actions/upload-artifact@v3
+              with:
+                name: file
+                path: src/file.pdf
+                if-no-file-found: error
