@@ -17,6 +17,6 @@ jobs :
             - name: Upload our file
               uses: actions/upload-artifact@v3
               with:
-                name: file
-                path: src/file.pdf
+                name: file upload
+                path: src/main.pdf
                 if-no-file-found: error
