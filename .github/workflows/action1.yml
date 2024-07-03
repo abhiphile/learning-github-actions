@@ -7,7 +7,7 @@ jobs :
         runs-on: ubuntu-latest
         steps:
             - name: Send Start Message
-              uses: Binozo/TelegramNotifier@v1.4
+              uses: binozo/telegramnotifier@v1.3
               with:
                 telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
                 telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
@@ -26,7 +26,7 @@ jobs :
             #     name: file upload
             #     path: src/main.pdf
             - name: Upload our file to Telegram
-              uses: binozo/telegramnotifier@v1.4
+              uses: binozo/telegramnotifier@v1.3
               with:
                 telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
                 telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
