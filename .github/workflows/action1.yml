@@ -16,7 +16,7 @@ jobs :
             - name: Checkout code
               uses: actions/checkout@v4
             - name: Compile pdf
-              uses: closoco/pdflatex-action@v1.0.0
+              uses: closoco/pdflatex-action@v1.1.0
               with:
                 texFile: src/resume.tex
 
