@@ -6,6 +6,12 @@ jobs :
     check-bats-version:
         runs-on: ubuntu-latest
         steps:
+            - name: Send Start Message
+              uses: binozo/telegramnotifier@v1.4
+              with:
+                telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+                telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+                message: "The file has started compiling !!"
             - name: Checkout code
               uses: actions/checkout@v4
             - name: Compile Latex Document
@@ -15,8 +21,14 @@ jobs :
                 root_file: main.tex
                 latexmk_use_lualatex: true
             - name: Upload our file
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: file upload
                 path: src/main.pdf
-                if-no-file-found: error
+            - name: Upload our file to Telegram
+              uses: binozo/telegramnotifier@v1.4
+              with:
+                telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+                telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+                message: "Congratulations! Your file has been compiled !"
+                file-path: ${{ github.workspace }}/src/main.pdf
