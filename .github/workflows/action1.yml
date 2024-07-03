@@ -25,17 +25,17 @@ jobs :
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                tex_path: 'dir/file.tex'
+                tex_path: 'src/resume.tex'
                 push: 'yes'
-            - name: Upload our file
-              uses: actions/upload-artifact@v4
-              with:
-                name: output
-                path: output/src/resume.pdf
-            - name: Upload our file to Telegram
-              uses: appleboy/telegram-action@master
-              with:
-                to: ${{secrets.TELEGRAM_TARGET_USER_ID}}
-                token: ${{secrets.TELEGRAM_BOT_TOKEN}}
-                message: "Congratulations! Your file has been compiled !"
-                document: src/main.pdf
+            # - name: Upload our file
+            #   uses: actions/upload-artifact@v4
+            #   with:
+            #     name: output
+            #     path: output/src/resume.pdf
+            # - name: Upload our file to Telegram
+            #   uses: appleboy/telegram-action@master
+            #   with:
+            #     to: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+            #     token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+            #     message: "Congratulations! Your file has been compiled !"
+            #     document: src/main.pdf
