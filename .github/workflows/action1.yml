@@ -14,19 +14,24 @@ jobs :
                 message: "The file has started compiling here ${{github.run_id}}"
             - name: Checkout code
               uses: actions/checkout@v4
+            - name: Compile pdf
+              uses: closoco/pdflatex-action@v1.0.0
+              with:
+                texFile: src/resume.tex
             # - name: Compile Latex Document
             #   uses: xu-cheng/latex-action@v2
             #   with:
             #     working_directory: src
             #     root_file: resume.tex
             #     latexmk_use_lualatex: true
-            - name: Compile Pdf
-              uses: vinay0410/tectonic-action@master
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                tex_path: 'src/resume.tex'
-                push: 'yes'
+            # - name: Compile Pdf
+            #   uses: vinay0410/tectonic-action@master
+            #   env:
+            #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #   with:
+            #     tex_path: 'src/resume.tex'
+            #     push: 'yes'
+
             # - name: Upload our file
             #   uses: actions/upload-artifact@v4
             #   with:
