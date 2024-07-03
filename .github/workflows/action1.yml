@@ -14,17 +14,17 @@ jobs :
                 message: "The file has started compiling here ${{github.run_id}}"
             - name: Checkout code
               uses: actions/checkout@v4
-            # - name: Compile Latex Document
-            #   uses: xu-cheng/latex-action@v2
-            #   with:
-            #     working_directory: src
-            #     root_file: main.tex
-            #     latexmk_use_lualatex: true
-            # - name: Upload our file
-            #   uses: actions/upload-artifact@v4
-            #   with:
-            #     name: file upload
-            #     path: src/main.pdf
+            - name: Compile Latex Document
+              uses: xu-cheng/latex-action@v2
+              with:
+                working_directory: src
+                root_file: resume.tex
+                latexmk_use_lualatex: true
+            - name: Upload our file
+              uses: actions/upload-artifact@v4
+              with:
+                name: output
+                path: output/src/resume.pdf
             - name: Upload our file to Telegram
               uses: appleboy/telegram-action@master
               with:
