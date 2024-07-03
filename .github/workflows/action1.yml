@@ -7,11 +7,11 @@ jobs :
         runs-on: ubuntu-latest
         steps:
             - name: Send Start Message
-              uses: binozo/telegramnotifier@v1.3
+              uses: appleboy/telegram-action@master
               with:
-                telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
-                telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
-                message: "The file has started compiling !!"
+                to: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+                token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+                message: "The file has started compiling here ${{github.run_id}}"
             - name: Checkout code
               uses: actions/checkout@v4
             # - name: Compile Latex Document
@@ -26,9 +26,9 @@ jobs :
             #     name: file upload
             #     path: src/main.pdf
             - name: Upload our file to Telegram
-              uses: binozo/telegramnotifier@v1.3
+              uses: appleboy/telegram-action@master
               with:
-                telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
-                telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+                to: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+                token: ${{secrets.TELEGRAM_BOT_TOKEN}}
                 message: "Congratulations! Your file has been compiled !"
-                file-path: src/main.pdf
+                document: src/main.pdf
