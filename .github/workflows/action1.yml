@@ -31,4 +31,4 @@ jobs :
                 telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
                 telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
                 message: "Congratulations! Your file has been compiled !"
-                file-path: ${{ github.workspace }}/src/file\ upload.zip
+                file-path: ${{ github.workspace }}/src/main.pdf
